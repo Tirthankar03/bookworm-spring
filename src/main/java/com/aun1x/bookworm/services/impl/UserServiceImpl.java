@@ -60,10 +60,16 @@ public class UserServiceImpl implements UserService {
         System.out.println("password>>>>>>" + plainPassword);
         System.out.println("register>>>>>>" + userEntity);
 
+        // Generate profile image using Dicebear
+        String profileImage = "https://api.dicebear.com/7.x/avataaars/svg?seed=" + userEntity.getUsername();
+        userEntity.setProfileImage(profileImage);
+
         // Encode the password and save the entity
         userEntity.setPassword(encoder.encode(plainPassword));
+
+
         UserEntity savedUser = userRepository.save(userEntity);
-        System.out.println("savedUser>>>>>>" + savedUser);
+
 
 
         // Create a new UserEntity for login with plain-text password
@@ -104,5 +110,10 @@ public class UserServiceImpl implements UserService {
         }
 
         throw new RuntimeException("Authentication failed");
+    }
+
+    @Override
+    public Optional<UserEntity> findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }

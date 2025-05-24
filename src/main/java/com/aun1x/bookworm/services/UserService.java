@@ -18,4 +18,5 @@ public interface UserService {
 
     LoginUserResponseDto login(UserEntity authorEntity);
 
+    Optional<UserEntity> findByUsername(String username);
 }
