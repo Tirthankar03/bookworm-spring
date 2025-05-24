@@ -6,6 +6,7 @@ import com.aun1x.bookworm.domain.dto.User.Response.LoginUserResponseDto;
 import com.aun1x.bookworm.domain.entities.UserEntity;
 import com.aun1x.bookworm.mappers.Mapper;
 import com.aun1x.bookworm.services.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.java.Log;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Log
+@Tag(name = "Auth APIs", description = "Register, Login Users")
 @RequestMapping("/api/auth")
 public class AuthController {
     private final UserService userService;
