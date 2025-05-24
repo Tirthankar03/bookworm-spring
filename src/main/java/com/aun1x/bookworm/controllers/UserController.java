@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Log
-@RequestMapping("/api/auth")
+@RequestMapping("/api/users")
 public class UserController {
     private final UserService userService;
 
@@ -20,21 +20,6 @@ public class UserController {
         this.userService = userService;
     }
 
-//    @PostMapping("/register")
-//    public ResponseEntity<LoginUserResponseDto> register(@RequestBody RegisterUserRequestDto registerUserRequestDto) {
-//
-//
-//    }
-//
-//
-//    @PostMapping("/login")
-//    public ResponseEntity<LoginUserResponseDto> login(@RequestBody LoginUserRequestDto loginUserRequestDto) {
-//
-//
-//    }
 
-    @GetMapping
-    public String hello() {
-        return "Hello World!";
-    }
+
 }
