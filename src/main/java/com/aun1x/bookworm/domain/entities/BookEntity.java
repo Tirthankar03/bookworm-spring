@@ -28,6 +28,8 @@ public class BookEntity {
     private Long id;
     private String title;
     private String caption;
+
+    @Column(length = 5000)
     private String image;
     private Integer rating;
 

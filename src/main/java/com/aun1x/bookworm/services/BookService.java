@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface BookService {
 
-    BookEntity save(BookEntity book);
+    BookEntity save(BookEntity book, String username);
 
     //overloading findAll with different return type
     Page<BookEntity> findAll(Pageable pageable);
