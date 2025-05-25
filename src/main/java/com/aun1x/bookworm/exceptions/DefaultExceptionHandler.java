@@ -77,6 +77,8 @@ public class DefaultExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiError> handleException(Exception e, HttpServletRequest request) {
+        e.printStackTrace();
+        System.out.println("error>>>" + e);
         ApiError apiError = new ApiError(
             request.getRequestURI(),
             e.getMessage(),

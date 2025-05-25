@@ -48,5 +48,14 @@ public class BookEntity {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-
+    @Override
+    public String toString() {
+        return "BookEntity(id=" + id +
+                ", title=" + title +
+                ", caption=" + caption +
+                ", image=" + image +
+                ", rating=" + rating +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt + ")";
+    }
 }

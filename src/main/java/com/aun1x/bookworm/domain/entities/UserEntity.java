@@ -46,6 +46,14 @@ public class UserEntity {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-
+    @Override
+    public String toString() {
+        return "UserEntity(id=" + id +
+                ", username=" + username +
+                ", email=" + email +
+                ", profileImage=" + profileImage +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt + ")";
+    }
 
 }

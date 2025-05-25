@@ -33,22 +33,21 @@ public class BookController {
 
     @PostMapping
     public ResponseEntity<BookEntity> createBook(@RequestBody CreateBookRequestDto request) {
+        try {
+            System.out.println("request" + request);
+            BookEntity bookEntity = createBookRequestMapper.mapToEntity(request);
+            System.out.println("bookEntity after mapping from DTO" + bookEntity);
 
-        System.out.println("request" + request);
-        //convert to entity
-        BookEntity bookEntity = createBookRequestMapper.mapToEntity(request);
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String username = authentication.getName();
+            BookEntity savedBook = bookService.save(bookEntity, username);
 
-        System.out.println("bookEntity after mapping from DTO" + bookEntity);
-
-
-        //get user from security context
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        String username = authentication.getName();
-
-        BookEntity savedBook = bookService.save(bookEntity, username);
-
-        return new ResponseEntity<>(savedBook, HttpStatus.CREATED);
+            return new ResponseEntity<>(savedBook, HttpStatus.CREATED);
+        } catch (Exception e) {
+            System.err.println("Error creating book: " + e.getMessage());
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

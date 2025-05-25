@@ -6,6 +6,7 @@ import com.aun1x.bookworm.repositories.BookRepository;
 import com.aun1x.bookworm.repositories.UserRepository;
 import com.aun1x.bookworm.services.BookService;
 import com.aun1x.bookworm.services.CloudinaryService;
+import lombok.extern.java.Log;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
+@Log
 public class BookServiceImpl implements BookService {
     private final BookRepository bookRepository;
     private final CloudinaryService cloudinaryService;
@@ -36,10 +38,16 @@ public class BookServiceImpl implements BookService {
         }
 
         UserEntity user = userOptional.get();
+//        System.out.println("user after fetching from username = " + user);
         String imageUrl = cloudinaryService.uploadImage(book.getImage(), "books");
         System.out.println("imageUrl = " + imageUrl);
 
         book.setImage(imageUrl);
+
+        log.info("book after imageUrl= " + book);
+        log.info("user = " + user);
+
+
 
         //set the user for the book
         book.setUser(user);
