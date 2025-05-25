@@ -46,6 +46,7 @@ public class UserEntity {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    //added to deal with circular reference error of lombok
     @Override
     public String toString() {
         return "UserEntity(id=" + id +

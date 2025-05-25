@@ -16,5 +16,5 @@ public interface BookService {
     Optional<BookEntity> findOne(Long id);
 
 
-    void delete(Long id);
+    void delete(Long id, String username);
 }

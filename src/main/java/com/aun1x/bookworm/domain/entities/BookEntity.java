@@ -35,7 +35,7 @@ public class BookEntity {
 
 
     @JsonBackReference
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne //should not cascade
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
@@ -48,6 +48,8 @@ public class BookEntity {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+
+    //added to deal with circular reference error of lombok
     @Override
     public String toString() {
         return "BookEntity(id=" + id +
